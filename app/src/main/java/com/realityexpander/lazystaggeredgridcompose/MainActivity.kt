@@ -75,27 +75,29 @@ fun RandomColorBox(item: ListItem) {
         .background(item.color))
 }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    LazyStaggeredGridComposeTheme {
-        RandomColorBox(item = ListItem(100.dp, Color.Red))
-    }
-}
+//@Preview(showBackground = true,
+//    device = "spec:width=1080px,height=2340px,dpi=440,isRound=true,chinSize=100px"
+//)
+//@Composable
+//fun DefaultPreview() {
+//    LazyStaggeredGridComposeTheme {
+//        RandomColorBox(item = ListItem(100.dp, Color.Red))
+//    }
+//}
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview2() {
 
     // set random seed
-    Random(1)
+    val random = Random(1)
 
     LazyStaggeredGridComposeTheme {
         StaggeredGrid(items = (1..100).map {
             ListItem(
-                height = Random.nextInt(100, 300).dp,
+                height = random.nextInt(100, 300).dp,
                 color = Color(
-                    Random.nextLong(0xFFFFFFFF)
+                    random.nextLong(0xFFFFFFFF)
                 ).copy(alpha = 1f)
             )
         })
